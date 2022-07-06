@@ -1,10 +1,4 @@
 
-GitPython==3.1.27
-
-ipywidgets==7.7.0
 numpy==1.16.6
-openpyxl==3.0.9
-
 Pillow==9.0.1
-pipreqs==0.4.11
 streamlit==1.8.1

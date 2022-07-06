@@ -1,0 +1,4 @@
+streamlit==1.6
+numpy==1.19.5
+scipy==1.6.2
+click==8

@@ -153,7 +153,7 @@ if uploaded_file is not None:
     submit = form.form_submit_button("Generate image")
     col1, col2 = st.columns([0.5, 0.5])
     with col1:
-        st.markdown('<p style="text-align: center;">Before</p>', unsafe_allow_html=True)
+        st.markdown('<p style="text-align: center;">Loaded Image</p>', unsafe_allow_html=True)
         st.image(bgimg, caption="Test", width=300)
 # txtLocation = st.radio('Text Location',
 #                                   ['Top Left', 'Top Right', 'Bottom Left', 'Bottom Right'])
@@ -249,7 +249,7 @@ if uploaded_file is not None:
 
 
 
-        st.markdown('<p style="text-align: center;">After</p>', unsafe_allow_html=True)
+        st.markdown('<p style="text-align: center;"></p>', unsafe_allow_html=True)
 
         #st.image(composite, caption=f"Image Text")
 

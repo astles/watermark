@@ -2,6 +2,8 @@
 from math import trunc
 import streamlit as st
 import numpy as np
+import matplotlib.pyplot as plt
+import cv2
 import numpy as np
 from PIL import Image
 from PIL import ImageFont
@@ -88,7 +90,7 @@ if uploaded_file is not None:
     saveName = form.text_input("save file name")
     txtColor = st.sidebar.radio('Text color',
                                   ['White', 'Black'])
-    Btxtcolor = st.sidebar.checkbox('HIDE Text Background')
+    Btxtcolor = st.sidebar.checkbox('Hide Text Background')
 
 
 
@@ -153,10 +155,9 @@ if uploaded_file is not None:
     submit = form.form_submit_button("Generate image")
     col1, col2 = st.columns([0.5, 0.5])
     with col1:
-        st.markdown('<p style="text-align: center;">Loaded Image</p>', unsafe_allow_html=True)
-        st.image(bgimg, caption="Test", width=300)
-# txtLocation = st.radio('Text Location',
-#                                   ['Top Left', 'Top Right', 'Bottom Left', 'Bottom Right'])
+        st.markdown('<p style="text-align: center;"></p>', unsafe_allow_html=True)
+        st.image(bgimg, caption="", width=300)
+
 
 
 
@@ -189,18 +190,10 @@ if uploaded_file is not None:
             # Capillaries
             draw.text((LnstrtX, 370), capillaries, Color, font=fontBld)
             draw.text((txtStrt, 370), "capillaries", Color, font=font)
-            # img.show()
-            #display(imgtxtr)
-            #img.save('sample-out.jpg')
-            # Show the image of just the text
-            #txtblock()
+           
 
         im33 = txtblock()
-        #im33()
-        #st.image(im33, width=150)
-        # txtimg = txtblock()
-        # st.image(txtimg())
-        # image33 = txtblock()
+        
 
         # RESIZE TEXT IMAGE TO BIGGER IMAGE
         # txtresz = imgtxtr.resize((w,h), Image.ANTIALIAS)
@@ -215,36 +208,29 @@ if uploaded_file is not None:
 
             #textover = im1.copy()
             imgb.paste(im1, (position), mask=im1)
-            imgb.save('saveName.png')
-            imgb.show()
-            # display(imgb)
-            #return
-
+            #imgb.save('fout.png')
+            #imgb.show()
+            from io import BytesIO
+            buf = BytesIO()
+            imgb.save(buf, format="PNG")
+            byte_im = buf.getvalue()
+            btn = col2.download_button(
+                label="Download Image",
+                data=byte_im,
+                file_name=saveName + '.png',
+                mime="image/png",
+                )
+           
         composite = pasteim
         composite()
-        #composite = composite.new('RGB')
-        #composite = ImageDraw.Draw(composite)
-        # composite = np.array(composite.convert("RGB"))
-        #composite = np.array(composite)
-        # composite.show()
-       # composite = composite.convert("RGB")
-       #  composite()
-        #composite.save('Lungtest', 'png')
-        #composite()
-        #composite()
-
-       # composite = np.array(composite)
-        #composite.show()
-        #This will make a Composite image pop up
-        #composite()
-        #im2 = txtblock()
-        #im2()
-        #im33()
-
+       
+        txtblock()
         #st.image(pasteim(), caption="Image Text", width=150)
         #st.image(composite, caption="Image Text", width=150)
         col2.success("🎉 Your file was generated!")
 
+        
+       
     with col2:
 
 
@@ -252,49 +238,5 @@ if uploaded_file is not None:
 
         st.markdown('<p style="text-align: center;"></p>', unsafe_allow_html=True)
 
-        #st.image(composite, caption=f"Image Text")
-
-        #st.download_button(txtblock())
-
-        # def get_image_download_link(txtblock):
-        #     """Generates a link allowing the PIL image to be downloaded
-        #     in:  PIL image
-        #     out: href string
-        #     """
-        #     buffered = BytesIO()
-        #     image.save(buffered, format="JPEG")
-        #     img_str = base64.b64encode(buffered.getvalue()).decode()
-        #     href = f'<a href="data:file/jpg;base64,{img_str}" download ="result.jpg">Download result</a>'
-        #     return href
 
 
-        # result = Image.fromarray(bgimg)
-        # st.markdown(get_image_download_link(result), unsafe_allow_html=True)
-        #
-        # st.image(img, caption=f"Image Predicted")
-        # result = Image.fromarray(img)
-        # st.markdown(get_image_download_link(result), unsafe_allow_html=True)
-
-
-    # with open("result", "rb") as file:
-    #     btn = st.download_button(
-    #         label="Download image",
-    #         data=result,
-    #         file_name=saveName,
-    #         mime="image/png"
-    #     )
-        # with open("image", "rb") as file:
-        #     btn = st.download_button(
-        #         label="Download image",
-        #         data=file,
-        #         file_name="flower.png",
-        #         mime="image/png"
-        #     )
-        # st.write(html, unsafe_allow_html=True)
-        # st.write("")
-        # col1.download_button(
-        #     "⬇️ Download .jpg",
-        #     data = saveimg,
-        #     file_name="lung.jpg",
-        #     mime="application/octet-stream",
-        # )

@@ -215,6 +215,7 @@ if uploaded_file is not None:
 
             #textover = im1.copy()
             imgb.paste(im1, (position), mask=im1)
+            imgb.save('saveName.png')
             imgb.show()
             # display(imgb)
             #return

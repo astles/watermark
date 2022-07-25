@@ -2,8 +2,8 @@
 from math import trunc
 import streamlit as st
 import numpy as np
-import matplotlib.pyplot as plt
-import cv2
+# import matplotlib.pyplot as plt
+# import cv2
 import numpy as np
 from PIL import Image
 from PIL import ImageFont

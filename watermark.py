@@ -12,7 +12,7 @@ from  PIL import ImageEnhance
 
 
 
-imagelog = Image.open('logo.png')
+imagelog = Image.open('logo1.png')
 
 font = ImageFont.truetype("Roboto-Light.ttf", 40)
 # Create two columns with different width
